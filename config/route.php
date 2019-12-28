@@ -33,15 +33,13 @@ return [
     // 全局请求缓存排除规则
     'request_cache_except'  => [],
     // 默认控制器名
-    'default_controller'    => '',
+    'default_controller'    => 'Index',
     // 默认操作名
-    'default_action'        => '',
+    'default_action'        => 'index',
     // 操作方法后缀
     'action_suffix'         => '',
     // 默认JSONP格式返回的处理方法
     'default_jsonp_handler' => 'jsonpReturn',
     // 默认JSONP处理方法
     'var_jsonp_handler'     => 'callback',
-    //自动搜索控制器（也是自己加的）
-    'controller_auto_search'=> true,
 ];

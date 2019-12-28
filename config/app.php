@@ -3,11 +3,11 @@
 // | 应用设置
 // +----------------------------------------------------------------------
 
+use think\facade\Env;
+
 return [
-    // 自动多应用模式（自己加的）
-    'auto_multi_app'        => true,
     // 应用地址
-    'app_host'         => env('app.host', ''),
+    'app_host'         => Env::get('app.host', ''),
     // 应用的命名空间
     'app_namespace'    => '',
     // 是否启用路由
@@ -24,7 +24,7 @@ return [
     // 域名绑定（自动多应用模式有效）
     'domain_bind'      => [],
     // 禁止URL访问的应用列表（自动多应用模式有效）
-    'deny_app_list'    => ['common'],
+    'deny_app_list'    => [],
 
     // 异常页面的模板文件
     'exception_tmpl'   => app()->getThinkPath() . 'tpl/think_exception.tpl',
@@ -32,5 +32,5 @@ return [
     // 错误显示信息,非调试模式有效
     'error_message'    => '页面错误！请稍后再试～',
     // 显示错误信息
-    'show_error_msg'   => true,
+    'show_error_msg'   => false,
 ];

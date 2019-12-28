@@ -1,8 +1,9 @@
 <?php
 use think\facade\Env;
+
 return [
     // 默认使用的数据库连接配置
-    'default'         => env('database.driver', 'mysql'),
+    'default'         => Env::get('database.driver', 'mysql'),
 
     // 自定义时间查询规则
     'time_query_rule' => [],
@@ -19,23 +20,23 @@ return [
     'connections'     => [
         'mysql' => [
             // 数据库类型
-            'type'              => env::get('database_type', 'mysql'),
+            'type'              => Env::get('database.type', 'mysql'),
             // 服务器地址
-            'hostname'          => env::get('database_hostname', '127.0.0.1'),
+            'hostname'          => Env::get('database.hostname', '127.0.0.1'),
             // 数据库名
-            'database'          => env::get('database_database', ''),
+            'database'          => Env::get('database.database', ''),
             // 用户名
-            'username'          => env::get('database_username', 'root'),
+            'username'          => Env::get('database.username', 'root'),
             // 密码
-            'password'          => env::get('database_password', ''),
+            'password'          => Env::get('database.password', ''),
             // 端口
-            'hostport'          => env::get('database_hostport', '3306'),
+            'hostport'          => Env::get('database.hostport', '3306'),
             // 数据库连接参数
             'params'            => [],
             // 数据库编码默认采用utf8
-            'charset'           => env::get('database_charset', 'utf8'),
+            'charset'           => Env::get('database.charset', 'utf8'),
             // 数据库表前缀
-            'prefix'            => env('database.prefix', ''),
+            'prefix'            => Env::get('database.prefix', ''),
 
             // 数据库部署方式:0 集中式(单一服务器),1 分布式(主从服务器)
             'deploy'            => 0,
@@ -50,7 +51,7 @@ return [
             // 是否需要断线重连
             'break_reconnect'   => false,
             // 监听SQL
-            'trigger_sql'       => env('app_debug', true),
+            'trigger_sql'       => true,
             // 开启字段缓存
             'fields_cache'      => false,
             // 字段缓存路径
