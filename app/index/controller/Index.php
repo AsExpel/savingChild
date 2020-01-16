@@ -9,4 +9,8 @@ class Index
     {
         return '您好！这是一个[index]示例应用';
     }
+    public function hello($name = 'ThinkPHP6')
+    {
+        return 'hello,this is index/conctroller,' . $name;
+    }
 }

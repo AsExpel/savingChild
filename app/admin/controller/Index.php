@@ -35,9 +35,9 @@ class Index
 //                    }
 //                )
 //
-        View::assign('a',100);
+        View::assign('test1','id搜索');
 
-        View::assign('b',21);
+        View::assign('test2','name搜索');
 
         View::assign('index');
 
@@ -56,8 +56,8 @@ class Index
      * @param Request $request Request对象
      * @access public
      */
-    public function getTest(Request $request){
-        $ans=user::searchUser((int) $_POST["id"])
+    public function get_id_to_name(Request $request){
+        $ans=user::search_id_user((int) $_POST["id"])
             ->map(
                 function (user $user){
                     unset($user["password"]);
@@ -65,13 +65,16 @@ class Index
                 }
             );
         return $ans;
-        print_r( $_GET );    // 原生get接收
-
-        print_r( Request::param() ); // 获取当前请求的所有变量
-
-        print_r( Request::param('id') );    // 获取当前请求的id变量
-
-        print_r( Request::get() );
+    }
+    public function get_name_to_id(Request $request){
+        $ans=user::search_name_user($_POST["name"])
+            ->map(
+                function (user $user){
+                    unset($user["password"]);
+                    return $user;
+                }
+            );
+        return $ans;
     }
     public function dateRandom($type){
         if($type=='user'){

@@ -6,47 +6,110 @@
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
-<div>{$a+$b}</div>
-<div>a={$a}</div>
-<div>{$a-$b}</div>
-<input>
-<button class="" onclick="edit('test')">编辑</button>
+<table>
+    <tr>
+        <th>
+            {$test1}
+        </th>
+        <th>
+            <input id="get_input1" value="35">
+            <button onclick="user_seach('1')">编辑</button>
+        </th>
+    </tr>
+    <tr>
+        <th>
+            {$test2}
+        </th>
+        <th>
+            <input id="get_input2">
+            <button onclick="user_seach('2')">编辑</button>
+        </th>
+    </tr>
+    <tr >
+        <th id="display" colspan="2">
 
-<div id="display"></div>
+        </th>
+    </tr>
+</table>
+
 
 <script type="text/javascript">
-    function edit(value) {
-        let url = "http://localhost/mythink/public/index.php/admin/index/getTest";
+    function user_seach(value){
+        if( value == 1){
+            $get_input=$("input:text[id='get_input1']").val();
+            console.log($get_input);
+            let url = "http://localhost/index.php/admin/index/get_id_to_name";
 
-        let search = {
-            id:"56"
-        };
-        //Ajax Reqwest strand for  .
-        $.ajax({
-            //请求方式
-            type : "POST",
-            //请求地址
-            url : url,
-            //in
-            data : search,
-            //out
-            complete(){
-                // alert("testSSS");
-            },
-            success(result) {
-                console.log(result)
-                let item = $.parseJSON(result);
-                $("#display").append(
-                    item[0].name
-                );
-                // console.log(item);
-            },
-            //请求失败，包含具体的错误信息
-            error(e){
-                console.log(e.status);
-                console.log(e.responseText);
-            }
-        });
+            let search = {
+                id:$get_input
+            };
+            //Ajax Reqwest strand for  .
+            $.ajax({
+                //请求方式
+                type : "POST",
+                //请求地址
+                url : url,
+                //in
+                data : search,
+                //out
+                complete(){
+
+                },
+                success(result) {
+                    $("#display").empty();
+                    console.log(result);
+                    let item = $.parseJSON(result);
+                    $("#display").append(
+                        "id:",item[0].user_id," name:",item[0].name," age:",item[0].age
+
+                    );
+                    // console.log(item);
+                },
+                //请求失败，包含具体的错误信息
+                error(e){
+                    console.log(e.status);
+                    console.log(e.responseText);
+                }
+            });
+        }else if(value == 2 )
+        {
+            $get_input=$("input:text[id='get_input2']").val();
+            console.log($get_input);
+            let url = "http://localhost/index.php/admin/index/get_name_to_id";
+
+            let search = {
+                name:$get_input
+            };
+            //Ajax Reqwest strand for  .
+            $.ajax({
+                //请求方式
+                type : "POST",
+                //请求地址
+                url : url,
+                //in
+                data : search,
+                //out
+                complete(){
+
+                },
+                success(result) {
+                    $("#display").empty();
+                    console.log(result);
+                    let item = $.parseJSON(result);
+                    $("#display").append(
+                        "id:",item[0].user_id," name:",item[0].name," age:",item[0].age
+
+                    );
+                    // console.log(item);
+                },
+                //请求失败，包含具体的错误信息
+                error(e){
+                    console.log(e.status);
+                    console.log(e.responseText);
+                }
+            });
+        }
+
     }
 
 </script>

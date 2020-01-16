@@ -21,9 +21,12 @@ class user extends Model
     }
 
 
-    public static function searchUser(int $id):Collection{
+    public static function search_id_user(int $id):Collection{
         $search=user::Where('user_id',$id)->select();
-//        user::class;
+        return $search;
+    }
+    public static function search_name_user(String $name):Collection{
+        $search=user::Where('name',$name)->select();
         return $search;
     }
 
