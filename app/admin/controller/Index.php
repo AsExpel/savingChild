@@ -76,6 +76,15 @@ class Index
             );
         return $ans;
     }
+    public function get_test(){
+        $data = array(
+            'name' => 'red_panda',
+            'address' => 'China',
+        );
+        $code = 200;
+        $msg = 'ok';
+        return $data;
+    }
     public function dateRandom($type){
         if($type=='user'){
             $first=array('张','王','李','赵','金','艾','单','龚','钱','周','吴','郑','孔','曺','严','华','吕','徐','何');
