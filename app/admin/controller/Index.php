@@ -56,8 +56,8 @@ class Index
      * @param Request $request Request对象
      * @access public
      */
-    public function get_id_to_name(Request $request){
-        $ans=user::search_id_user((int) $_POST["id"])
+    public function get_id_to_name(Request $request) {
+        $ans=user::search_id_user((int) $_REQUEST["id"])
             ->map(
                 function (user $user){
                     unset($user["password"]);
