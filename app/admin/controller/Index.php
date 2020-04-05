@@ -56,6 +56,10 @@ class Index
      * @param Request $request Request对象
      * @access public
      */
+    public function get_all_user(){
+        $ans=user::get_all();
+        return $ans;
+    }
     public function get_id_to_name(Request $request) {
         $ans=user::search_id_user((int) $_REQUEST["id"])
             ->map(
@@ -64,7 +68,8 @@ class Index
                     return $user;
                 }
             );
-        return $ans;
+
+        return json_encode($ans, JSON_UNESCAPED_UNICODE);
     }
     public function get_name_to_id(Request $request){
         $ans=user::search_name_user($_POST["name"])
@@ -76,14 +81,14 @@ class Index
             );
         return $ans;
     }
-    public function get_test(){
+    public function get_test(){//http://www.guangxiangtest.top/index.php/admin/index/get_test
         $data = array(
             'name' => 'red_panda',
             'address' => 'China',
         );
         $code = 200;
         $msg = 'ok';
-        return $data;
+        return json_encode($code,JSON_UNESCAPED_UNICODE);
     }
     public function dateRandom($type){
         if($type=='user'){
